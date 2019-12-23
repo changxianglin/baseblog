@@ -18,6 +18,18 @@ author: 'lisi',
   ]
 }
 
+const getDetail = (id) => {
+  // 先 mock
+  return {
+id: 1,
+title: '标题A',
+content: '内容A',
+createTime: '1577119951582',
+author: 'zhangsan',
+}
+}
+
 module.exports = {
-  getList
+  getList,
+  getDetail
 }
