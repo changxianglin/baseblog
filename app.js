@@ -13,7 +13,7 @@ const getPostData = (req) => {
           resolve({})
           return
       }
-      const postData = ''
+      let postData = ''
       req.on('data', chunk => {
           postData += chunk.toString()
       })
@@ -38,9 +38,10 @@ const serveHandle = (req, res) => {
   // 获取 path
   const url = req.url
   req.path = url.split('?')[0]
+  console.log('获取路径', req.path)
 
   // 解析 query
-  req.query = queryString.parse(url.split('?')[0])
+  req.query = queryString.parse(url.split('?')[1])
 
   // 处理 post data
   getPostData(req).then(postData => {
