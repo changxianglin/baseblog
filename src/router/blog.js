@@ -40,7 +40,7 @@ if(method === 'POST' && req.path === '/api/blog/update') {
     }
   }
 
-if(method === 'POST' && path === '/api/blog/del') {
+if(method === 'POST' && req.path === '/api/blog/del') {
     const result = delBlog(id)
     if(result) {
         return new SuccessModel()
