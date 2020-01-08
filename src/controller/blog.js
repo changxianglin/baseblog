@@ -51,7 +51,7 @@ const updateBlog = (id, blogData = {}) => {
     const content = blogData.content
 
     const sql = `
-          update blogs set title='${title}', content='${content}' where id=${id}
+          update blogs set title='${title}', content='${content}' where id=${id};
     `
 
   return exec(sql).then(updateData => {
@@ -64,9 +64,18 @@ const updateBlog = (id, blogData = {}) => {
   })
 }
 
-const delBlog = (id) => {
+const delBlog = (id, author) => {
   // 删除的 id
-  return true
+  const sql = `delete from blogs where id='${id}' and author='${author}';`
+
+  return exec(sql).then(deleteData => {
+    console.log('deleteData is ', deleteData)
+    if(deleteData.affectedRows > 0) {
+        return true
+    }
+
+     return false
+  })
 }
 
 module.exports = {
